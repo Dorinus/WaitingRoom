@@ -1,16 +1,20 @@
 package external;
 
+import temperature.mediator.TemperatureModel;
+
 public class Thermometer implements Runnable
 {
   private String id;
   private double t;
   private int d;
+  private TemperatureModel model;
 
-  public Thermometer(String id, double t, int d)
+  public Thermometer(String id, double t, int d,TemperatureModel model)
   {
     this.id = id;
     this.t = t;
     this.d = d;
+    this.model =model;
   }
 
   private double temperature(double t, int p, int d, double t0, int s)
@@ -50,6 +54,7 @@ public class Thermometer implements Runnable
       try
       {
         t = temperature(t, 2, d, 0, 6);
+        model.addTemperature(id, t);
         System.out.println("ID: " + id + "\nTemp: " + t);
         Thread.sleep(6000);
       }
