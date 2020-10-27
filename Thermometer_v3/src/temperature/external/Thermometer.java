@@ -1,4 +1,4 @@
-package thermometer.external;
+package temperature.external;
 
 public class Thermometer implements Runnable
 {
